@@ -27,8 +27,12 @@ class SendEmailsCommand extends Command
      */
     public function handle()
     {
-        $users = [];
+        //users, that should get email,It can be got from db
+        $users = [['email'=>'test@gmail.com', 'name'=> 'test1'],
+                  ['email'=>'test+2@gmail.com', 'name'=> 'test2'],
+                  ['email'=>'test+3@gmail.com', 'name'=> 'test3']];
 
+        //send emails
         foreach ($users as $user) {
             Mail::to($user['email'])->send(new YourEmailTemplate());
         }
